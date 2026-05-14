@@ -1,15 +1,6 @@
-아래는 첨부하신 **「01 Design Spec.md」**와 **「02 Function Signature.md」**를 기준으로 작성한 **“영화 컬렉션 관리 시스템 Code Skeleton”**입니다.
-이번 단계에서는 **함수 내부 구현 로직은 작성하지 않고**, 다음 Coding 단계에서 바로 세부 구현을 시작할 수 있도록 **MSA 서비스별 디렉터리 구조, 계층 구조, 클래스, 함수 선언부, Port Interface, Event Handler Skeleton**만 작성했습니다.
-
-특히 기존 설계 원칙인 **서비스 책임 경계 유지**, **Command/Query 분리**, **Outbound Port 기반 외부 의존성 격리**, **Event 기반 후속 처리**, **Entity 직접 반환 금지**를 그대로 반영했습니다.  
-
----
-
 # 영화 컬렉션 관리 시스템
 
 # Code Skeleton
-
----
 
 # 1. Code Skeleton 작성 기준
 
@@ -2386,5 +2377,3 @@ Test Cases / Integration Tests
 | Event Publisher     | 상태 변경 이벤트 발행                  |
 | Event Handler       | 외부 이벤트 수신 반영                  |
 | Shared Contracts    | 공통 Context / Event / Error 계약 |
-
-특히 **Collection Service → MovieValidationPort**, **Review Service → MovieValidationPort**, **Gateway → AuthVerificationPort**와 같은 Port 기반 설계는 기존 Function Signature 설계서의 **의존성 최소화 원칙**을 코드 구조에 직접 반영한 핵심 요소입니다. 
