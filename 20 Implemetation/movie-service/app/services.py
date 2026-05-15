@@ -1,0 +1,13 @@
+from app.application.movie_command_service import MovieCommandService
+from app.application.movie_import_service import MovieImportService
+from app.application.movie_query_service import MovieQueryService
+from app.events.movie_events import MovieEventPublisher
+from app.infrastructure.in_memory_event_publisher import InMemoryEventPublisher
+from app.infrastructure.in_memory_movie_provider import InMemoryExternalMovieProvider
+from app.infrastructure.in_memory_movie_repository import InMemoryMovieRepository
+
+movie_repository = InMemoryMovieRepository()
+movie_event_publisher = MovieEventPublisher(InMemoryEventPublisher())
+movie_command_service = MovieCommandService(movie_repository, movie_event_publisher)
+movie_query_service = MovieQueryService(movie_repository)
+movie_import_service = MovieImportService(InMemoryExternalMovieProvider(), movie_repository)
